@@ -1,5 +1,6 @@
 package com.chao.flyertea.net;
 
+import com.chao.flyertea.bean.CreditVariable;
 import com.chao.flyertea.bean.FavorVariable;
 import com.chao.flyertea.bean.ForumVariable;
 import com.chao.flyertea.bean.LoginMsg;
@@ -36,4 +37,8 @@ public interface FlyerteaApi {
     // https://www.flyertea.com/source/plugin/mobile/mobile.php?module=basicdata&type=forumlist&version=5&appkey=98bf6a79892a1148a1&token=MjA4NzA1M3wxNTg4NzgyNzQ1MzM5fGFlOGJiNDNjNmJhNzMxOWViY2Q0MDRhYTliNzAzZDc1OGY3NWZlNjdlOGY2NzhhOGUxOTc2OGE3MjMzMzcyNmE%253D&appversion=7.18.0
     @GET("source/plugin/mobile/mobile.php?")
     Call<Result<FavorVariable, Object>> getMyFavourite();
+
+   // https://www.flyertea.com/source/plugin/mobile/mobile.php?module=users&version=6&type=apptask&method=get&appkey=98bf6a79892a1148a1&token=MjA4NzA1M3wxNTk0MzExMTg1MDg3fGMwNWJlOTRiMzRjODE1NTRiMjljMzRiNWI5YTUyZTMyMjBjMDgyZWZmOTE4MWUwZmM0MGQwZjQ4NTUwOTQwMjU%253D&appversion=7.20.1&taskid=12
+    @GET("source/plugin/mobile/mobile.php?")
+    Call<Result<CreditVariable,Object>>  getCredit();
 }

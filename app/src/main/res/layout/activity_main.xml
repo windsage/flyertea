@@ -45,12 +45,25 @@
             android:layout_weight="1"
             android:scrollbars="none" />
 
-        <Button
-            android:id="@+id/random"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Random" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/random"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Random" />
+
+
+            <Button
+                android:id="@+id/credit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="credit" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView

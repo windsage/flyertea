@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.chao.flyertea.bean.Bank;
+import com.chao.flyertea.bean.CreditVariable;
 import com.chao.flyertea.bean.Favor;
 import com.chao.flyertea.bean.FavorVariable;
 import com.chao.flyertea.bean.ForumThread;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public TextView successInfo, errorInfo;
 
-    private Button randomBtn;
+    private Button randomBtn, creditBtn;
 
     private ListView bankList;
 
@@ -108,7 +109,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initViews() {
         bankList = findViewById(R.id.list);
         randomBtn = findViewById(R.id.random);
+        creditBtn = findViewById(R.id.credit);
         randomBtn.setOnClickListener(this);
+        creditBtn.setOnClickListener(this);
         radiogroup = findViewById(R.id.radiogroup);
         lastPost = findViewById(R.id.last_post);
         lastReply = findViewById(R.id.last_reply);
@@ -138,6 +141,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Integer[] eachReplyCount = splitRedPacket(55, 8, 3, 15);
             for (int i = 0; i < 8; i++) {
 
+            }
+        } else if (v.getId() == R.id.credit) {
+            for (int i = 1; i < 15; i++) {
+                getCredit(String.valueOf(i));
             }
         }
 
@@ -222,8 +229,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         query.put("version", "4");
 
         HashMap<String, String> info = new HashMap<>();
-        info.put("username", "");
-        info.put("password", "");
+        info.put("username", "飞翔的荷兰号");
+        info.put("password", "uranus0127");
 
         FlyerteaApi request = RequestUtils.createRequest(query);
 
@@ -248,6 +255,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e(TAG, "--------------------------");
             }
         });
+    }
+
+    private void getCredit(String taskid) {
+        HashMap<String, String> params = RequestUtils.createRequestParams();
+        params.put("version", "6");
+        params.put("module", "users");
+        params.put("type", "apptask");
+        params.put("method", "get");
+        params.put("taskid", taskid);
+
+        final FlyerteaApi request = RequestUtils.createRequest(params);
+        request.getCredit().enqueue(new Callback<Result<CreditVariable, Object>>() {
+            @Override
+            public void onResponse(Call<Result<CreditVariable, Object>> call, Response<Result<CreditVariable, Object>> response) {
+                if (response.isSuccessful()) {
+                    Result<CreditVariable, Object> result = response.body();
+                    CreditVariable variable = result.getVariables();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result<CreditVariable, Object>> call, Throwable t) {
+
+            }
+        });
+
+
     }
 
     private void getMyFavourite() {

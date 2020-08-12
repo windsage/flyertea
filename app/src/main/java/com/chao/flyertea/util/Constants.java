@@ -15,7 +15,7 @@ public class Constants {
 
     static final String APPKEY = "98bf6a79892a1148a1";
 
-    static final String APPVERSION = "7.18.0";
+    static final String APPVERSION = "7.20.1";
 
     static final String TOKEN = "MjA4NzA1M3wxNTg4NTE2MjUxOTcwfGRkNzZiMmJhZmQ3MGFjYzljZGJhOT" +
             "BiMTcxZmVlNmUzZGQwNmI4NGM4ZmUxNWIzZmIzZDJlMWU2Zjk3NDZiNjM%3D";
