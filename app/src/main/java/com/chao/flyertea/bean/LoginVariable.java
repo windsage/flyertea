@@ -1,6 +1,8 @@
 package com.chao.flyertea.bean;
 
-public class LoginVariable {
+import java.io.Serializable;
+
+public class LoginVariable implements Serializable {
 
     private String cookiepre;
     private String auth;
